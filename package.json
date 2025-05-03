@@ -1,0 +1,28 @@
+{
+  "name": "server-club-management-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dotenv -e .env.development nodemon src/index.ts",
+    "stage": "dotenv -e .env.staging nodemon src/index.ts",
+    "migrate:stage": "dotenv -e .env.staging npx prisma migrate deploy",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "express": "^5.1.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.3",
+    "cross-env": "^7.0.3",
+    "dotenv-cli": "^8.0.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
+  }
+}
