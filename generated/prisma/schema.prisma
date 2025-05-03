@@ -14,3 +14,11 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
+
+model Country {
+  id          Int    @id @default(autoincrement())
+  iso2        String @unique @db.VarChar(2)
+  countryName String @unique @db.VarChar(100)
+
+  @@map("countries")
+}
