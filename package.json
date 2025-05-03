@@ -4,12 +4,16 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "vercel-build": "npm run build && npm run prisma:generate && npm run prisma:migrate",
     "build": "tsc",
-    "start": "node dist/index.js", 
+    "start": "node dist/index.js",
+    "live": "nodemon src/index.ts",
+    "dev": "dotenv -e .env.development nodemon src/index.ts",
+    "stage": "dotenv -e .env.staging nodemon src/index.ts",
+    "migrate:stage": "dotenv -e .env.staging npx prisma migrate deploy",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
-    "vercel-build": "npm run build && npm run prisma:generate && npm run prisma:migrate"
+    "prisma:migrate": "prisma migrate deploy"
+    
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
