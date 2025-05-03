@@ -12,7 +12,14 @@ app.get('/', (req, res) => {
   res.json({ status: 'API is working!' });
 });
 
+app.get('/ayam', (req, res) => {
+    res.json({ status: 'API is working!' });
+  });
+
 // Start server
 app.listen(port, () => {
   console.log(`✅ Server running on http://localhost:${port}`);
 });
+
+module.exports = app
+
