@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/ayam', (req, res) => {
-    res.json({ status: 'API is working!' });
+    res.json({ status: 'API is working ypp!' });
   });
 
 // Start server
