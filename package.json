@@ -4,18 +4,26 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "vercel-build": "npm run build && npm run prisma:generate && npm run prisma:migrate",
+    "vercel-build": "npm install && npm run build && npm run prisma:generate && npm run prisma:migrate:prod",
     "build": "tsc",
     "start": "node dist/index.js",
     "live": "nodemon src/index.ts",
-    "dev": "dotenv -e .env.development nodemon src/index.ts",
-    "stage": "dotenv -e .env.staging nodemon src/index.ts",
-    "migrate:stage": "dotenv -e .env.staging npx prisma migrate deploy",
+    "dev": "dotenv -e .env.development -- nodemon src/index.ts",
+    "stage": "dotenv -e .env.staging -- nodemon src/index.ts",
+    "dev-migrate:create": "dotenv -e .env.development -- npx prisma migrate dev --create-only --name",
+    "dev-migrate:deploy": "dotenv -e .env.development -- npx prisma migrate deploy",
+    "dev-migrate:revert": "dotenv -e .env.development -- npx prisma migrate resolve --rolled-back",
+    "migrate:stage": "dotenv -e .env.staging -- prisma migrate deploy",
+    "migrate:prod": "dotenv -e .env.production -- prisma migrate deploy",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy"
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:migrate:prod": "dotenv -e .env.production -- prisma migrate deploy",
+    "prisma:studio": "dotenv -e .env.development -- npx prisma studio",
+    "clean": "rimraf dist node_modules/.prisma"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
+    "dotenv-cli": "^8.0.0",
     "express": "^5.1.0"
   },
   "devDependencies": {
@@ -23,6 +31,7 @@
     "@types/node": "^22.15.3",
     "nodemon": "^3.1.10",
     "prisma": "^6.7.0",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }

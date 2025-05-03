@@ -126,6 +126,21 @@ exports.Prisma.CountryScalarFieldEnum = {
   countryName: 'countryName'
 };
 
+exports.Prisma.ClubScalarFieldEnum = {
+  id: 'id',
+  clubName: 'clubName',
+  countryId: 'countryId'
+};
+
+exports.Prisma.CenterScalarFieldEnum = {
+  id: 'id',
+  centerName: 'centerName',
+  address: 'address',
+  city: 'city',
+  postcode: 'postcode',
+  clubId: 'clubId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -138,7 +153,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Country: 'Country'
+  Country: 'Country',
+  Club: 'Club',
+  Center: 'Center'
 };
 
 /**
