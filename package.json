@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "live": "nodemon src/index.ts",
     "dev": "dotenv -e .env.development nodemon src/index.ts",
     "stage": "dotenv -e .env.staging nodemon src/index.ts",
     "migrate:stage": "dotenv -e .env.staging npx prisma migrate deploy",
