@@ -1,6 +1,7 @@
 import express, { Response } from 'express';
 import { PrismaClient } from '../generated/prisma';
 import { TypedRequestBody, TypedResponseBody } from '../config/config-interface/config-interface-api';
+import { RequestPostCountry, APIResponseGetAllCountry } from './project/country/interface-country';
 
 const prisma = new PrismaClient();
 const app = express();
