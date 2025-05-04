@@ -46,7 +46,9 @@ app.get('/countries', async (req, res: express.Response<CountryResponse>) => {
         countryName: true
       }
     });
-    res.json({ success: true, data: countries });
+    
+    // Explicitly set 200 OK on success
+    res.status(200).json({ success: true, data: countries });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, error: 'Failed to fetch countries' });
