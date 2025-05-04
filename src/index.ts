@@ -1,26 +1,23 @@
+import apiCountryRouter from './project/api/api-country/api-country-routes';
 import express from 'express';
-import { PrismaClient } from '../generated/prisma';
+import cors from "cors";
 
-const prisma = new PrismaClient();
-const app = express();
-const port = 3030; // Changed to 3030
+const app = express()
+const port = process.env.PORT || 3030;
+app.use(cors())
 
-app.use(express.json());
+// API routes
+app.use('/countries', apiCountryRouter);
 
-// Health check route
-app.get('/', (req, res) => {
-  res.json({ status: 'API is working!' });
+// Health check
+app.get('/', (_req, res) => {
+  res.json({ status: 'API is working!', timestamp: new Date() });
 });
 
-app.get('/ayam', (req, res) => {
-    res.json({ status: 'API is working ypp!' });
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`✅ Server running on http://localhost:${port}`);
   });
+}
 
-// Start server
-app.listen(port, () => {
-  console.log(`✅ Server running on http://localhost:${port}`);
-});
-
-
-
-module.exports = app;
+export default app;
