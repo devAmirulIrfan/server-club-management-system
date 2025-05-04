@@ -25,6 +25,7 @@ class ApiCountryController {
   async getCountries(req: any, res: Response<TypedResponseBody<APIResponseGetAllCountry[] | []>>) {
     try {
       const countries = await apiCountryService.getCountries();
+
       
       res.status(200).json({
         isSuccess: true,
