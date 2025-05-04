@@ -1,8 +1,10 @@
 import apiCountryRouter from './project/api/api-country/api-country-routes';
 import express from 'express';
+import cors from "cors";
 
 const app = express()
 const port = process.env.PORT || 3030;
+app.use(cors())
 
 // API routes
 app.use('/countries', apiCountryRouter);
